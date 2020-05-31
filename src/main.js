@@ -1,3 +1,5 @@
+import '@/styles/main.css'
+
 (function() {
   const path = require('path');
 

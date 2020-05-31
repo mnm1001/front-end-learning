@@ -60,7 +60,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'main',
-      template: 'src/demoTemplate.html',
+      template: 'src/main.html',
       // base: '/',
       chunks: ['main'],
     }),
