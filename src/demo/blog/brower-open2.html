@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.staticfile.org/markdown-it/10.0.0/markdown-it.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="/src/styles/modest.css">
+  <script src="https://cdn.staticfile.org/highlight.js/9.18.1/highlight.min.js"></script>
+</head>
+
+<body>
+  brower-open2.html
+  <a href="https://baidu.com/" target="_self">_self	默认。在相同的框架中打开被链接文档。</a>
+  <iframe style="width:800px;height: 200px;"src="./brower-open3.html" name="f3" frameborder="0"></iframe>
+
+  <div id="content"></div>
+</body>
+
+<script>
+  var renderMarkdown = window.markdownit({
+    highlight: function (str, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return '<pre class="hljs"><code>' +
+            hljs.highlight(lang, str, true).value +
+            '</code></pre>';
+        } catch (__) { }
+      }
+
+      return '<pre class="hljs"><code>' + renderMarkdown.utils.escapeHtml(str) + '</code></pre>';
+    }
+  });
+
+  document.getElementById('content').innerHTML =
+    renderMarkdown.render(`
+      `);
+</script>
+
+</html>
+
+<script>
+</script>
+<style>
+  body {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  a {
+    display: block;
+  }
+</style>

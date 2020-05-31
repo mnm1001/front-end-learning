@@ -1,0 +1,37 @@
+{
+  "name": "front-end-learning",
+  "version": "1.0.0",
+  "description": "Some demo for front-end learning",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.dev.js",
+    "dev": "webpack-dev-server --config webpack.dev.js",
+    "dev3": "browser-sync start --server --files \"src\"",
+    "dev2": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnm1001/front-end-learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mnm1001/front-end-learning/issues"
+  },
+  "homepage": "https://github.com/mnm1001/front-end-learning#readme",
+  "dependencies": {
+    "browser-sync": "^2.26.7"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.0.1",
+    "css-loader": "^3.5.3",
+    "html-webpack-plugin": "^4.3.0",
+    "markdown-loader": "^5.1.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "raw-loader": "^4.0.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

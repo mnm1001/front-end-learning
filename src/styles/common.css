@@ -1,0 +1,8 @@
+pre,
+code {
+  background-color: transparent;
+}
+
+.hljs-string {
+  white-space: break-spaces;
+}
