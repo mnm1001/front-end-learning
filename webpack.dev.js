@@ -1,28 +1,28 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
-const fs = require('fs');
-const exec = require('child_process').exec;
-function readFileList(dir, filesList = []) {
-  const files = fs.readdirSync(dir);
+const fs = require('fs')
+const exec = require('child_process').exec
+function readFileList (dir, filesList = []) {
+  const files = fs.readdirSync(dir)
 
   files.forEach((item, index) => {
-    const fullPath = path.join(dir, item);
-    const stat = fs.statSync(fullPath);
-    if (stat.isDirectory()) {   
-      readFileList(path.join(dir, item), filesList); //递归读取文件
-    } else {        
-      filesList.push(fullPath);           
-    }    
-  });
-  return filesList;
+    const fullPath = path.join(dir, item)
+    const stat = fs.statSync(fullPath)
+    if (stat.isDirectory()) {
+      readFileList(path.join(dir, item), filesList) // 递归读取文件
+    } else {
+      filesList.push(fullPath)
+    }
+  })
+  return filesList
 }
-const filesList = [];
-readFileList('./src/demo',filesList);
+const filesList = []
+readFileList('./src/demo', filesList)
 
 const indexFilePaths = filesList.filter(item => item.match(/index\.js/))
 
@@ -30,7 +30,7 @@ const entry = indexFilePaths.reduce((result, value) => {
   const indexFileName = value.match(/demo\/(.*?)\/index.js/)[1]
   result[indexFileName] = `./${value}`
   return result
-} , {})
+}, {})
 
 module.exports = {
   entry: {
@@ -38,31 +38,31 @@ module.exports = {
     ...entry
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].bundle.js'
   },
   devtool: 'cheap-eval-source-map',
   devServer: {
     // historyApiFallback: true,
     // contentBase: './dist',
-    hot: true,
+    hot: true
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src/'),
+      '@': path.resolve(__dirname, 'src/')
     }
   },
   plugins: [
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [
-        { from: './public', to: '' },
-      ],
+        { from: './public', to: '' }
+      ]
     }),
     new HtmlWebpackPlugin({
       title: 'main',
       template: 'src/main.html',
       // base: '/',
-      chunks: ['main'],
+      chunks: ['main']
     }),
     ...Object.keys(entry).map((item) => {
       return new HtmlWebpackPlugin({
@@ -70,30 +70,30 @@ module.exports = {
         filename: item,
         template: 'src/demoTemplate.html',
         // base: '/',
-        chunks: ['util', item],
+        chunks: ['util', item]
       })
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
+      filename: '[name].css'
+    })
   ],
   module: {
     rules: [
-        {
-          test: /\.md$/,
-          use: [
-              {
-                  loader: "raw-loader",
-              }
-          ]
+      {
+        test: /\.md$/,
+        use: [
+          {
+            loader: 'raw-loader'
+          }
+        ]
       },
       {
-          test: /innerJs.js$/,
-          use: [
-              {
-                  loader: "raw-loader",
-              }
-          ]
+        test: /innerJs.js$/,
+        use: [
+          {
+            loader: 'raw-loader'
+          }
+        ]
       },
       {
         test: /\.css$/,
@@ -102,8 +102,8 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               hmr: true,
-              reloadAll: true,
-            },
+              reloadAll: true
+            }
           },
           'css-loader'
         ]
@@ -119,11 +119,11 @@ module.exports = {
         use: [
           'file-loader'
         ]
-      },
+      }
     ]
   },
   optimization: {
     splitChunks: {
-    },
-  },  
-};
+    }
+  }
+}
