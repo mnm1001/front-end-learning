@@ -90,7 +90,7 @@ console.log('\nin 无初始化操作, 直接赋值操作, 所以in可以用const
   var funcs = []
   var o = {
     a: 1,
-    b: 2
+    b: 2,
   }
   for (let a in o) {
     console.log(2222, '', a)

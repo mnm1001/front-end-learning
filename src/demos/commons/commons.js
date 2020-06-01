@@ -1,4 +1,4 @@
-import '@/styles/common.css'
+import './commons.css'
 
 const getMarkdown = function (mdData) {
   var markdown = window.markdownit({
@@ -12,7 +12,7 @@ const getMarkdown = function (mdData) {
       }
 
       return '<pre class="hljs"><code>' + markdown.utils.escapeHtml(str) + '</code></pre>'
-    }
+    },
   })
   return markdown.render(mdData)
 }

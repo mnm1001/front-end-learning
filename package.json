@@ -19,9 +19,7 @@
     "url": "https://github.com/mnm1001/front-end-learning/issues"
   },
   "homepage": "https://github.com/mnm1001/front-end-learning#readme",
-  "dependencies": {
-    "browser-sync": "^2.26.7"
-  },
+  "dependencies": {},
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.0.1",
@@ -36,6 +34,7 @@
     "markdown-loader": "^5.1.0",
     "mini-css-extract-plugin": "^0.9.0",
     "raw-loader": "^4.0.1",
+    "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
