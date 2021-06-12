@@ -1,0 +1,50 @@
+<style>
+  #a {
+    width: 500px;
+    height: 300px;
+    background-color: #ddd;
+    position: absolute;
+    z-index: 1;
+  }
+   
+  #b {
+    width: 100px;
+    height: 100px;
+    background-color: #aaa;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 2;
+  }
+  #a2 {
+    top: 150px;
+    width: 500px;
+    height: 300px;
+    background-color: #999;
+    position: absolute;
+    z-index: 2;
+  }
+   
+  #b2 {
+    width: 100px;
+    height: 100px;
+    background-color: #777;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: -1;
+  }
+  </style>
+   
+  <div id="a">
+      <div id="b"></div>
+  </div>
+  <div id="a2">
+    <div id="b2"></div>
+  </div>
